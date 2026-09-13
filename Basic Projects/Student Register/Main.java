@@ -1,14 +1,14 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public class Main {
+public class Main { // Execução do projeto e interação com o usuário
   public static void main(String args[]) {
     
-    StudentService alunoService = new StudentService();
+    StudentService alunoService = new StudentService(); // Como os métodos não são static, é criado um objeto para usar os métodos do Service
     Scanner scanner = new Scanner(System.in);
     int option;
 
-    do {
+    do { // Cria um menu onde o usuário escolhe sua próxima ação
        System.out.println("1 - Register a student");
        System.out.println("2 - List students");
        System.out.println("3 - Look for a student");
@@ -19,8 +19,8 @@ public class Main {
 
        option = scanner.nextInt();
 
-       switch (option) {
-           case 1: {
+       switch (option) { // Define as operações baseado na opção escolhida
+           case 1: { // O usuário registra um aluno
                System.out.print("Insert the student´s ID: ");
                int studentId = scanner.nextInt();
                scanner.nextLine();
@@ -38,12 +38,12 @@ public class Main {
                break;
            }
 
-           case 2: {
+           case 2: { // O usuário pede ao sistema pra listar os alunos cadastrados
                alunoService.listStudents();
                break;
            }
 
-            case 3: {
+            case 3: { // O usuário procura um aluno pelo seu ID
                System.out.print("Insert the student´s ID: ");
                int studentId = scanner.nextInt();
 
@@ -59,7 +59,7 @@ public class Main {
                break;
             }
             
-            case 4: {
+            case 4: { // O usuário atualiza os dados de um aluno 
                 System.out.print("Insert the student's ID: ");
                 int studentId = scanner.nextInt();
                 scanner.nextLine();
@@ -83,7 +83,7 @@ public class Main {
                  break;
             }
 
-            case 5: {
+            case 5: { // O usuário remove um aluno 
                System.out.print("Insert the student's ID: ");
                int studentId = scanner.nextInt();
                scanner.nextLine();
@@ -100,7 +100,7 @@ public class Main {
                 break;
              }
            
-             case 6: {
+             case 6: { // O usuário atualiza as notas de um aluno
                System.out.print("Insert the student's ID: ");
                int studentId = scanner.nextInt();
                scanner.nextLine();
@@ -124,12 +124,12 @@ public class Main {
                 break;
              }
 
-             case 7: {
+             case 7: { // O usuário sai do menu e encerra o programa
                System.out.println("Encerrando...");
                break;
              }
 
-             default:
+             default: // Caso o usuário selecione uma opção fora do intervalo de 1 - 7
                 System.out.println("Opção inválida.");
         }
     } while (option != 7);
