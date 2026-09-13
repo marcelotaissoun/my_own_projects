@@ -1,29 +1,29 @@
 public class Student {
 
-    private int studentId;
-    private String studentName;
-    private String studentEmail;
-    private double grade01;
-    private double grade02;
+    private int studentId; // ID do Estudante
+    private String studentName; // Nome do Estudante
+    private String studentEmail; // E-mail do Estudante
+    private double grade01; // Nota da AV1 do Estudante
+    private double grade02; // Nota da AV2 do Estudante
 
-    public Student(int studentId, String studentName, String studentEmail) {
+    public Student(int studentId, String studentName, String studentEmail) { // Método construtor
         this.studentId = studentId;
         this.studentName = studentName;
         this.studentEmail = studentEmail;
     }
 
-    public double avgGradeCalc() {
+    public double avgGradeCalc() { // Calcula a média do aluno
         return(grade01 + grade02) / 2;
     }
 
-    public String approvedOrNot() {
+    public String approvedOrNot() { // Retorna se ele foi aprovado ou não, considerando média mínima = 7
         if(avgGradeCalc() >= 7) {
             return "Approved";
         } else {
             return "Failed";
         }
     }
-
+    // getters e setters
     public int getStudentId() {
         return studentId;
     }
@@ -65,7 +65,7 @@ public class Student {
     }
 
     @Override
-    public String toString() {
+    public String toString() { // Para formatação no console
         return "ID: " + studentId +
                 ", Name: " + studentName +
                 ", Email: " + studentEmail +
