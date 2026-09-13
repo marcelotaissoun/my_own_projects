@@ -24,39 +24,39 @@ public class Student {
         }
     }
 
-    public int get studentId() {
+    public int getStudentId() {
         return studentId;
     }
 
-     public void set studentId(int studentId) {
+     public void setStudentId(int studentId) {
         this.studentId = studentId;
     }
 
-    public String get studentName() {
+    public String getStudentName() {
         return studentName;
     }
 
-     public void set studentName(String studentName) {
+     public void setStudentName(String studentName) {
         this.studentName = studentName;
     }
 
-    public String get studentEmail() {
+    public String getStudentEmail() {
         return studentEmail;
     }
 
-     public void set studentEmail(String studentEmail) {
+     public void setStudentEmail(String studentEmail) {
         this.studentEmail = studentEmail;
     }
 
-    public double get grade01() {
+    public double getGrade01() {
         return grade01;
     }
 
-     public void set grade01(double grade01) {
+     public void setGrade01(double grade01) {
         this.grade01 = grade01;
     }
 
-    public double get grade02() {
+    public double getGrade02() {
         return grade02;
     }
 
