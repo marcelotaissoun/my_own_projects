@@ -63,4 +63,13 @@ public class Student {
      public void setGrade02(double grade02) {
         this.grade02 = grade02;
     }
+
+    @Override
+    public String toString() {
+        return "ID: " + studentId +
+                ", Name: " + studentName +
+                ", Email: " + studentEmail +
+                ", Grade 01: " + grade01 +
+                ", Grade 02: " + grade02;
+    }
 }
