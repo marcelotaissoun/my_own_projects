@@ -1,4 +1,4 @@
-public class Student {
+public class Student { // Cria um modelo (model) de Aluno
 
     private int studentId; // ID do Estudante
     private String studentName; // Nome do Estudante
