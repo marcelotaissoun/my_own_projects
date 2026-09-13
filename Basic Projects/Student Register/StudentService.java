@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 
 public class StudentService {
-
     private ArrayList<Student> students = new ArrayList<>();
 
     public void addStudent(Student student) {
@@ -31,4 +30,12 @@ public class StudentService {
             }
          }
     }
+
+    public void updateStudent(int studentId, String studentName, String studentEmail) {
+         Student student = searchById(studentId);
+         if(student != null) {
+            student.setStudentName(studentName);
+            student.setStudentEmail(studentEmail);
+         }
+   }
 }
