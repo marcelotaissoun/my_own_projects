@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 public class Main {
   public static void main(String args[]) {
+    
     StudentService alunoService = new StudentService();
     Scanner scanner = new Scanner(System.in);
     int option;
@@ -14,8 +15,7 @@ public class Main {
        System.out.println("4 - Alter student");
        System.out.println("5 - Remove a student");
        System.out.println("6 - Register grades");
-       System.out.println("7 - Check status");
-       System.out.println("0 - Exit console");
+       System.out.println("7 - Exit console");
 
        option = scanner.nextInt();
 
@@ -120,10 +120,6 @@ public class Main {
                break;
 
                case 7:
-                  // situação
-               break;
-
-               case 0:
                   System.out.println("Encerrando...");
                break;
 
