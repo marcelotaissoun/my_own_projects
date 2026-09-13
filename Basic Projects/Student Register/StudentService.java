@@ -39,14 +39,14 @@ public class StudentService {
          }
    }
 
-   public void updateGrade01(double grade01) {
+   public void updateGrade01(int studentId, double grade01) {
          Student student = searchById(studentId);
          if(student != null) {
             student.setGrade01(grade01);
          }
    }
 
-   public void updateGrade02(double grade02) {
+   public void updateGrade02(intm studentId, double grade02) {
          Student student = searchById(studentId);
          if(student != null) {
             student.setGrade02(grade02);
