@@ -91,7 +91,7 @@ public class Main {
                Student student = alunoService.searchById(studentId);
 
                if(student != null) {
-                  alunoService.removeStudent(student);
+                  alunoService.removeStudent(studentId);
                   System.out.println("Student succesfully removed!");
 
                 } else {
