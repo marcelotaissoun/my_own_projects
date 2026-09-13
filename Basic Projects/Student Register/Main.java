@@ -58,29 +58,78 @@ public class Main {
                break;
 
             case 4:
-               // alterar
+                System.out.print("Insert the student's ID: ");
+                int studentId = scanner.nextInt();
+                scanner.nextLine();
+
+                Student student = alunoService.searchById(studentId);
+
+                if(student != null) {
+                   System.out.print("Insert the new name: ");
+                   String studentName = scanner.nextLine();
+
+                   System.out.print("Insert the new email: ");
+                   String studentEmail = scanner.nextLine();
+
+                   alunoService.updateStudent(studentId, studentName, studentEmail);
+
+                   System.out.println("Student updated successfully!");
+
+                   } else {
+                       System.out.println("Student not found!");
+                     }
                break;
 
-           case 5:
-               // remover
+              case 5:
+                  System.out.print("Insert the student's ID: ");
+                  int studentId = scanner.nextInt();
+                  scanner.nextLine();
+
+                  Student student = alunoService.searchById(studentId);
+
+                  if(student != null) {
+                     alunoService.removeStudent(student);
+                     System.out.println("Student succesfully removed!");
+
+                  } else {
+                      System.out.println("Student not found!");
+                    }
                break;
 
-           case 6:
-               // notas
+               case 6:
+                  System.out.print("Insert the student's ID: ");
+                  int studentId = scanner.nextInt();
+                  scanner.nextLine();
+
+                  Student student = alunoService.searchById(studentId);
+
+                  if(student != null) {
+                     System.out.print("Insert the grade of the first test from this student: ");
+                     double grade01 = scanner.nextDouble();
+                     scanner.nextLine();
+                     alunoService.updateGrade01(studentId, grade01);
+
+                     System.out.print("Insert the grade of second test from this student: ");
+                     double grade02 = scanner.nextDouble();
+                     scanner.nextLine();
+                     alunoService.updateGrade02(studentId, grade02);
+
+                  } else {
+                      System.out.println("Student not found!");
+                    }                
                break;
 
-           case 7:
-               // situação
+               case 7:
+                  // situação
                break;
 
-           case 0:
-               System.out.println("Encerrando...");
+               case 0:
+                  System.out.println("Encerrando...");
                break;
 
-           default:
-               System.out.println("Opção inválida.");
-       }
-
-   } while (opcao != 0);
+               default:
+                  System.out.println("Opção inválida.");
+           }
+       } while (opcao != 0);
   }
 }
