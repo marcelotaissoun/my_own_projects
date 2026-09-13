@@ -13,7 +13,7 @@ public class StudentService {
         }
     }
 
-    public Aluno searchById(int studentId) {
+    public Student searchById(int studentId) {
         for(Student student : students){
             if(student.getStudentId() == studentId) {
                return student;
@@ -24,11 +24,11 @@ public class StudentService {
     }
 
     public void removeStudent(int studentId) {
-         for(Student student : students){
-            if(student.getStudentId() == studentId) {
-               remove(student);
-            }
-         }
+         Student student = searchById(studentId);
+
+         if(student != null) {
+             students.remove(student);
+         }      
     }
 
     public void updateStudent(int studentId, String studentName, String studentEmail) {
@@ -46,7 +46,7 @@ public class StudentService {
          }
    }
 
-   public void updateGrade02(intm studentId, double grade02) {
+   public void updateGrade02(int studentId, double grade02) {
          Student student = searchById(studentId);
          if(student != null) {
             student.setGrade02(grade02);
