@@ -60,7 +60,7 @@ public class Student {
         return grade02;
     }
 
-     public void set grade02(double grade02) {
+     public void setGrade02(double grade02) {
         this.grade02 = grade02;
     }
 }
