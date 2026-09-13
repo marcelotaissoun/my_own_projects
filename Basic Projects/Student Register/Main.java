@@ -39,8 +39,7 @@ public class Main {
            }
 
            case 2: {
-               ArrayList<Student> students = alunoService.listStudents();
-               System.out.println(students);
+               alunoService.listStudents();
                break;
            }
 
