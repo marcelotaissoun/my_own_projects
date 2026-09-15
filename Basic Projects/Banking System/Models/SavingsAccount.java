@@ -7,14 +7,19 @@ public class SavingsAccount extends Account {
     }
 
     @Override
-    public void withdrawal(double value) {
-        if(value <= 0) {
+    protected void validateWithdrawal(double transacValue) {
+        if(transacValue <= 0) {
             throw new InvalidOpException("Withdrawal value must be greater than zero.");
         }
       
-        if(value > getAccBalance()) {
+        if(transacValue > getAccBalance()) {
             throw new InsuffBalanceException("Insufficient balance.");
         }
-        doWithdrawal(value);
+    }
+    
+    @Override
+    public void withdrawal(double transacValue) {
+        validateWithdrawal(transacValue);
+        doWithdrawal(transacValue);
     }
 }
