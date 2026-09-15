@@ -1,12 +1,14 @@
+package model;
+
 import exception.InvalidOpException;
 import exception.InsuffBalanceException;
 
 public class CheckingAccount extends Account {
-    private double ChAccLimit;
+    private double chAccLimit;
 
-    public CheckingAccount(int accId, Client client, double ChAccLimit) {
+    public CheckingAccount(int accId, Client client, double chAccLimit) {
         super(accId, client);
-        this.ChAccLimit = ChAccLimit;
+        this.chAccLimit = chAccLimit;
     }
 
     @Override
@@ -15,18 +17,12 @@ public class CheckingAccount extends Account {
             throw new InvalidOpException("Withdrawal value must be greater than zero");
         }
 
-        if(transacValue > getAccBalance() + ChAccLimit) {
+        if(transacValue > getAccBalance() + chAccLimit) {
             throw new InsuffBalanceException("Balance and limit are insufficient");
         }
     }
-    
-    @Override
-    public void withdrawal(double transacValue) {
-        validateWithdrawal(transacValue);
-        doWithdrawal(transacValue);
-    }
 
     public double getChAccLimit() {
-        return ChAccLimit;
+        return chAccLimit;
     }
 }
