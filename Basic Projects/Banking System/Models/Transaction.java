@@ -16,7 +16,7 @@ public class Transaction {
     }
 
     public double getTransacValue() {
-        return transacType;
+        return transacValue;
     }
 
     public LocalDateTime getTransacDate() {
