@@ -1,3 +1,5 @@
+package model;
+
 import exception.InvalidOpException;
 import exception.InsuffBalanceException;
 
@@ -15,11 +17,5 @@ public class SavingsAccount extends Account {
         if(transacValue > getAccBalance()) {
             throw new InsuffBalanceException("Insufficient balance.");
         }
-    }
-    
-    @Override
-    public void withdrawal(double transacValue) {
-        validateWithdrawal(transacValue);
-        doWithdrawal(transacValue);
     }
 }
