@@ -1,3 +1,5 @@
+package model;
+
 public class Client {
     private String clientName;
     private String clientCpf;
