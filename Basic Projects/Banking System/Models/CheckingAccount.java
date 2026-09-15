@@ -10,15 +10,20 @@ public class CheckingAccount extends Account {
     }
 
     @Override
-    public void withdrawal(double value) {
-        if(value <= 0) {
+    protected void validateWithdrawal(double transacValue) {
+        if(transacValue <= 0) {
             throw new InvalidOpException("Withdrawal value must be greater than zero");
         }
 
-        if(value > getAccBalance() + ChAccLimit) {
+        if(transacValue > getAccBalance() + ChAccLimit) {
             throw new InsuffBalanceException("Balance and limit are insufficient");
         }
-        doWithdrawal(value);
+    }
+    
+    @Override
+    public void withdrawal(double transacValue) {
+        validateWithdrawal(transacValue);
+        doWithdrawal(transacValue);
     }
 
     public double getChAccLimit() {
