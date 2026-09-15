@@ -1,3 +1,6 @@
+import exception.InvalidOpException;
+import exception.InsuffBalanceException;
+
 public class CheckingAccount extends Account {
     private double ChAccLimit;
 
