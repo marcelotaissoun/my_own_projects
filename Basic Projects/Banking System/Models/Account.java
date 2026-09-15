@@ -1,3 +1,5 @@
+package model;
+
 import java.util.ArrayList;
 import java.util.List;
 import exception.InvalidOpException;
@@ -28,29 +30,29 @@ public abstract class Account {
         doWithdrawal(transacValue);
     }
     
-    public abstract void validateWithdrawal(double transacValue);
+    protected abstract void validateWithdrawal(double transacValue);
 
     private void addValueToBalance(double transacValue) {
-        balance += transacValue;
+        accBalance += transacValue;
     }
 
     private void remValueFromBalance(double transacValue) {
-        balance -= transacValue;
+        accBalance -= transacValue;
     }
 
     protected void doWithdrawal(double transacValue) {
         remValueFromBalance(transacValue);
-        registerTransac(TransacType.WITHDRAWAL, transacValue);
+        registerTransac(TransactionType.WITHDRAWAL, transacValue);
     }
 
     protected void doSentTransfer(double transacValue) {
         remValueFromBalance(transacValue);
-        registerTransac(TransacType.SENT_TRANSFER, transacValue);
+        registerTransac(TransactionType.SENT_TRANSFER, transacValue);
     }
 
     protected void doReceivedTransfer(double transacValue) {
         addValueToBalance(transacValue);
-        registerTransac(TransacType.RECEIVED_TRANSFER, transacValue);
+        registerTransac(TransactionType.RECEIVED_TRANSFER, transacValue);
     }
 
     public void transferTo(Account destination, double transacValue) {
@@ -77,7 +79,7 @@ public abstract class Account {
     }
 
     public int getAccId() {
-        return AccId;
+        return accId;
     }
 
     public Cliente getClient() {
