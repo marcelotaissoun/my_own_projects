@@ -15,50 +15,56 @@ public abstract class Account {
         this.transactions = new ArrayList<>();
     }
 
-    public void deposit(double value) {
-        if(value <= 0) {
+    public void deposit(double transacValue) {
+        if(transacValue <= 0) {
             throw new InvalidOpException("Deposit value must be greater than zero.");
         }
-        addValueToBalance(valor);
-        registerTransac(TransacType.DEPOSIT, value);
+        addValueToBalance(transacValue);
+        registerTransac(TransacType.DEPOSIT, transacValue);
     }
 
-    public abstract void withdrawal(double value);
+    public void withdrawal(double transacValue) {
+        validateWithdrawal(transacValue);
+        doWithdrawal(transacValue);
+    }
+    
+    public abstract void validateWithdrawal(double transacValue);
 
-    private void addValueToBalance(double value) {
-        balance += value;
+    private void addValueToBalance(double transacValue) {
+        balance += transacValue;
     }
 
-    private void remValueFromBalance(double value) {
-        balance -= value;
+    private void remValueFromBalance(double transacValue) {
+        balance -= transacValue;
     }
 
-    protected void doWithdrawal(double value) {
-        remValueFromBalance(value);
-        registerTransac(TransacType.WITHDRAWAL, value);
+    protected void doWithdrawal(double transacValue) {
+        remValueFromBalance(transacValue);
+        registerTransac(TransacType.WITHDRAWAL, transacValue);
     }
 
-    protected void doSentTransfer(double value) {
-        remValueFromBalance(value);
-        registerTransac(TransacType.SENT_TRANSFER, value);
+    protected void doSentTransfer(double transacValue) {
+        remValueFromBalance(transacValue);
+        registerTransac(TransacType.SENT_TRANSFER, transacValue);
     }
 
-    protected void doReceivedTransfer(double value) {
-        addValueToBalance(value);
-        registerTransac(TransacType.RECEIVED_TRANSFER, value);
+    protected void doReceivedTransfer(double transacValue) {
+        addValueToBalance(transacValue);
+        registerTransac(TransacType.RECEIVED_TRANSFER, transacValue);
     }
 
-    public void transferTo(Account destination, double value) {
+    public void transferTo(Account destination, double transacValue) {
         if(destination == null) {
             throw new InvalidOpException("There is no account to receive the transfer");
         }
 
-        if(value <= 0) {
+        if(transacValue <= 0) {
             throw new InvalidOpException("Transfer value must be greater than zero");
         }
 
-        doSentTransfer(value);
-        destination.doReceivedTransfer(value);
+        validateWithdrawal(transacValue);
+        doSentTransfer(transacValue);
+        destination.doReceivedTransfer(transacValue);
     }
 
     private void registerTransac(TransactionType transacType, double transacValue) {
