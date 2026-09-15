@@ -1,11 +1,11 @@
 import java.util.ArrayList;
 import java.util.List;
+import exception.InvalidOpException;
 
 public abstract class Account {
     private int accId;
     private Client client;
     private double accBalance;
-
     private List<Transactions> transactions;
 
     public Account(int accId, Client client) {
@@ -20,7 +20,7 @@ public abstract class Account {
             throw new InvalidOpException("Deposit value must be greater than zero.");
         }
         addValueToBalance(valor);
-        transactions.add(new Transaction(TransacType.DEPOSIT, value));
+        registerTransac(TransacType.DEPOSIT, value);
     }
 
     public abstract void withdrawal(double value);
@@ -35,9 +35,37 @@ public abstract class Account {
 
     protected void doWithdrawal(double value) {
         remValueFromBalance(value);
-        transactions.add(new Transaction(TransacType.WITHDRAWAL, value));
+        registerTransac(TransacType.WITHDRAWAL, value);
     }
 
+    protected void doSentTransfer(double value) {
+        remValueFromBalance(value);
+        registerTransac(TransacType.SENT_TRANSFER, value);
+    }
+
+    protected void doReceivedTransfer(double value) {
+        addValueToBalance(value);
+        registerTransac(TransacType.RECEIVED_TRANSFER, value);
+    }
+
+    public void transferTo(Account destination, double value) {
+        if(destination == null) {
+            throw new InvalidOpException("There is no account to receive the transfer");
+        }
+
+        if(value <= 0) {
+            throw new InvalidOpException("Transfer value must be greater than zero");
+        }
+
+        doSentTransfer(value);
+        destination.doReceivedTransfer(value);
+    }
+
+    private void registerTransac(TransactionType transacType, double transacValue) {
+        Transaction transaction = new Transaction(transacType, transacValue);
+        transactions.add(transaction);
+    }
+    
     public double getAccBalance() {
         return accBalance;
     }
