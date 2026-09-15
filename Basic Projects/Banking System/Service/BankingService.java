@@ -1,3 +1,5 @@
+package service;
+
 import java.util.ArrayList;
 import java.util.List;
 import exception.AccNotFoundException;
@@ -12,16 +14,19 @@ public class BankingService {
     }
 
     public void addAccount(Account account) {
+        if(account == null) {
+            throw new InvalidOpException("Account cannot be null.");
+        }
         accounts.add(account);
     }
 
-    public Conta searchAccount(int accId) {
+    public Account searchAccount(int accId) {
         for (Account account : accounts) {
             if (account.getAccId() == accId) {
-                return accId;
+                return account;
             }
         }
-        throw new accNotFoundException("Account " + numero + " not found.");
+        throw new AccNotFoundException("Account " + accId + " not found.");
     }
 
     public void transfer(int idFromOrigin, int destinationId, double transacValue) {
@@ -29,9 +34,9 @@ public class BankingService {
             throw new InvalidOpException("The origin account and destination account cannot be the same.");
         }
 
-        Accout origin = searchAccount(idFromOrigin);
-        Conta destination = searchAccount(destinationId);
-        origin.transferTo(destinationId, transacValue);
+        Account origin = searchAccount(idFromOrigin);
+        Account destination = searchAccount(destinationId);
+        origin.transferTo(destination, transacValue);
     }
 
     public List<Account> getAccounts() {
